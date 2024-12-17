@@ -1,0 +1,52 @@
+
+  .p-4 {
+    z-index: 1;
+    background: linear-gradient(135deg, #f3ecdd, #e2e8f0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 0 30px rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.1rem;
+    color: #333;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  header:hover {
+    background: linear-gradient(135deg, #e2e8f0, #f3ecdd);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), inset 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+
+  .logo {
+    height: 3rem;
+    width: 3rem;
+    background-image: url(assets/logo.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease;
+  }
+  
+  .logo:hover {
+    background-size: 110%;
+    cursor: pointer;
+  }
+
+.border.rounded-md.px-4.py-1 {
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: transparent;
+  color: #2d3748;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.border.rounded-md.px-4.py-1:hover {
+  background-color: #a78bfa;
+  border-color: #cbd5e0;
+  color: white;
+  transform: translateY(-1px);
+}

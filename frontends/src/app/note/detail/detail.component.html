@@ -1,0 +1,127 @@
+<div
+  class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg font-serif"
+  *ngIf="!isEditMode; else editModeTemplate"
+>
+  <!-- Title and Content Section -->
+  <div class="mb-6">
+    <h2 class="text-3xl font-semibold text-gray-800">{{ note.title }}</h2>
+    <p class="mt-2 text-lg text-gray-600">{{ note.content }}</p>
+  </div>
+
+  <!-- Created and Updated By Section -->
+  <div class="flex justify-between items-center mb-6">
+    <div class="flex items-center space-x-4">
+      <div class="flex-shrink-0">
+        <img
+          [src]="note.createdBy.profile"
+          alt="Creator Profile"
+          class="w-12 h-12 rounded-full"
+        />
+      </div>
+      <div>
+        <h4 class="font-semibold text-gray-700">Created by</h4>
+        <p class="text-sm text-gray-600">
+          {{ note.createdBy.firstName }} {{ note.createdBy.lastName }}
+        </p>
+        <p class="text-sm text-gray-500">{{ note.createdBy.email }}</p>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <div class="flex-shrink-0">
+        <img
+          [src]="note.modifiedBy.profile"
+          alt="Modifier Profile"
+          class="w-12 h-12 rounded-full"
+        />
+      </div>
+      <div>
+        <h4 class="font-semibold text-gray-700">Updated by</h4>
+        <p class="text-sm text-gray-600">
+          {{ note.modifiedBy.firstName }} {{ note.modifiedBy.lastName }}
+        </p>
+        <p class="text-sm text-gray-500">{{ note.modifiedBy.email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status and Date Info -->
+  <div class="mb-6">
+    <p class="text-sm text-gray-500">
+      Status: <span class="font-semibold text-gray-700">{{ note.status }}</span>
+    </p>
+    <p class="text-sm text-gray-500">
+      Created At:
+      <span class="font-semibold text-gray-700">{{
+        note.createdAt | date : "short"
+      }}</span>
+    </p>
+    <p class="text-sm text-gray-500">
+      Updated At:
+      <span class="font-semibold text-gray-700">{{
+        note.updatedAt | date : "short"
+      }}</span>
+    </p>
+  </div>
+
+  <!-- Edit and Cancel Buttons -->
+  <div class="flex space-x-4">
+    <button
+      (click)="editNote()"
+      id="editBtn"
+      class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+    >
+      Edit
+    </button>
+    <button
+    id="cancelBtn"
+      (click)="cancelEdit()"
+      class="px-6 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+
+<ng-template #editModeTemplate>
+  <div
+    class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg font-serif"
+  >
+    <h2 class="text-3xl font-semibold text-gray-800">Edit Note</h2>
+
+    <!-- Edit Title -->
+    <label for="title" class="block text-gray-700 font-bold mb-2">Edit Title</label>
+    <input
+      type="text"
+      [(ngModel)]="note.title"
+      class="mt-4 w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Note Title"
+    />
+
+    <!-- Edit Content -->
+    <label for="content" class="block text-gray-700 font-bold mb-2">Edit Note</label>
+    <textarea
+      [(ngModel)]="note.content"
+      class="mt-4 w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Note Content"
+    ></textarea>
+
+
+    <!-- Save and Cancel Buttons -->
+    <div class="flex space-x-4 mt-6">
+      <button
+      id="saveBtn"
+        (click)="saveNote()"
+        class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+      >
+        Save
+      </button>
+      <button
+        (click)="cancelEdit()"
+        class="px-6 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</ng-template>

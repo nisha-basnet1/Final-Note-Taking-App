@@ -1,0 +1,43 @@
+<div class="container mx-auto p-6">
+    <form [formGroup]="notForm" (ngSubmit)="onSubmit()" class="max-w-xl mx-auto">
+      <div class="mb-4">
+        <label for="title" class="block text-gray-700 font-bold mb-2">TITLE</label>
+        <input 
+          type="text" 
+          id="title" 
+          formControlName="title" 
+          class="w-full px-3 py-2 border rounded-lg"
+          [class.border-red-500]="title.invalid && title.touched"
+        >
+        <div *ngIf="title.invalid && title.touched" class="text-red-500 text-sm mt-1">
+          <p *ngIf="title.errors['required']">Title is required.</p>
+          <p *ngIf="title.errors['minlength']">Title must be at least 3 characters long.</p>
+          <p *ngIf="title.errors['maxlength']">Title cannot exceed 100 characters.</p>
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="content" class="block text-gray-700 font-bold mb-2">ADD NOTE</label>
+        <textarea 
+          id="content" 
+          formControlName="content" 
+          rows="6" 
+          class="w-full px-3 py-2 border rounded-lg"
+          [class.border-red-500]="content.invalid && content.touched"
+        ></textarea>
+        <div *ngIf="content.invalid && content.touched" class="text-red-500 text-sm mt-1">
+          <p *ngIf="content.errors['required']">Content is required.</p>
+          <p *ngIf="content.errors['minlength']">Content must be at least 10 characters long.</p>
+          <p *ngIf="content.errors['maxlength']">Content cannot exceed 1000 characters.</p>
+        </div>
+      </div>
+  
+      <button 
+        type="submit" 
+        [disabled]="notForm.invalid"
+        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 disabled:opacity-50"
+      >
+        Create Note
+      </button>
+    </form>
+  </div>

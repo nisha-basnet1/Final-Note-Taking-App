@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 16px; /* Base font size for consistency */
+    line-height: 1.5; /* Good readability */
+    color: #813cc6; /* Neutral dark gray text */
+    margin: 0;
+    padding: 0;
+  }
+
+html{
+    background: #f7f7f7;
+}

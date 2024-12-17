@@ -1,0 +1,204 @@
+<div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold text-center text-gray-700 mb-6">Register</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- First Name -->
+    <div class="mb-4">
+      <label for="firstName" class="block text-gray-700 font-medium mb-2"
+        >First Name</label
+      >
+      <input
+        id="firstName"
+        type="text"
+        formControlName="firstName"
+        placeholder="Enter first name"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['firstName'].touched &&
+          registrationForm.controls['firstName'].invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="registrationForm.controls['firstName'].errors['required']">
+          First Name is required.
+        </small>
+        <small *ngIf="registrationForm.controls['firstName'].errors['minlength']">
+          Minimum 2 characters required.
+        </small>
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="mb-4">
+      <label for="lastName" class="block text-gray-700 font-medium mb-2"
+        >Last Name</label
+      >
+      <input
+        id="lastName"
+        type="text"
+        formControlName="lastName"
+        placeholder="Enter last name"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['lastName'].touched &&
+          registrationForm.controls['lastName'].invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="registrationForm.controls['lastName'].errors['required']">
+          Last Name is required.
+        </small>
+        <small *ngIf="registrationForm.controls['lastName'].errors['minlength']">
+          Minimum 2 characters required.
+        </small>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700 font-medium mb-2"
+        >Email</label
+      >
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter email"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['email'].touched &&
+          registrationForm.controls['email'].invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="registrationForm.controls['email'].errors['required']">
+          Email is required.
+        </small>
+        <small *ngIf="registrationForm.controls['email'].errors['email']">
+          Invalid email format.
+        </small>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-4">
+      <label for="password" class="block text-gray-700 font-medium mb-2"
+        >Password</label
+      >
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Enter password"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['password'].touched &&
+          registrationForm.controls['password'].invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="registrationForm.controls['password'].errors['required']">
+          Password is required.
+        </small>
+        <small *ngIf="registrationForm.controls['password'].errors['minlength']">
+          Minimum 6 characters required.
+        </small>
+      </div>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="mb-4">
+      <label for="confirmPassword" class="block text-gray-700 font-medium mb-2"
+        >Confirm Password</label
+      >
+      <input
+        id="confirmPassword"
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirm password"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['confirmPassword'].touched &&
+          registrationForm.controls['confirmPassword'].invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small
+          *ngIf="registrationForm.controls['confirmPassword'].errors['required']"
+        >
+          Confirm Password is required.
+        </small>
+      </div>
+
+      <!-- Password Confirmation Validation -->
+      <div
+        *ngIf="
+          registrationForm.controls['confirmPassword'].touched &&
+          registrationForm.controls['confirmPassword'].invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small
+          *ngIf="registrationForm.controls['confirmPassword'].errors['required']"
+        >
+          Confirm Password is required.
+        </small>
+        <small
+          *ngIf="
+            registrationForm.controls['confirmPassword'].errors['passwordMismatch']
+          "
+        >
+          Passwords do not match.
+        </small>
+      </div>
+    </div>
+
+    <!-- Profile Picture -->
+    <div class="mb-4">
+      <label for="profile" class="block text-gray-700 font-medium mb-2"
+        >Profile Picture</label
+      >
+      <input
+        id="profile"
+        type="file"
+        (change)="onFileSelected($event)"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      [disabled]="registrationForm.invalid"
+      class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-300"
+    >
+      Register
+    </button>
+  </form>
+  <!-- Additional Links -->
+  <div class="text-center">
+    <p class="mt-2 text-sm text-gray-600">
+      Don't have an account? 
+      <a href="/login" class="text-blue-600 hover:underline">
+        Login
+      </a>
+    </p>
+  </div>
+
+  <!-- Messages -->
+  <div *ngIf="errorMessage" class="mt-4 text-red-500 text-center">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="successMessage" class="mt-4 text-green-500 text-center">
+    {{ successMessage }}
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="flex flex-col min-h-screen">
+  <!-- Header -->
+  <header class="p-4 flex justify-between items-center">
+    <div class="logo" routerLink="/dashboard">
+    </div>    
+    <nav class="flex gap-2">
+      <ng-container *ngIf="authService.isAuthenticated$ | async; else notAuthenticated">
+
+        <div class="flex items-center space-x-2 bg-white pl-1 pr-4 py-1 rounded-full" *ngIf="authUser">
+          <img [src]="authUser?.profile" alt="" class="h-12 w-12 rounded-full border-2 border-purple-200">
+          <span class="text-purple-500 uppercase font-serif font-semibold">{{ authUser?.name }}</span>
+        </div>
+
+        <button class="border rounded-md px-4 py-1" id="createBtn"
+        [routerLink]="'/notes/create'"
+        routerLinkActive="active-link">
+          Create Note
+        </button>
+
+        <button class="border rounded-md px-4 py-1" id="profileBtn"
+        [routerLink]="'/profile'"
+        routerLinkActive="active-link">
+          Profile
+        </button>
+
+        <button 
+          (click)="logout()"
+          class="border rounded-md px-4 py-1"
+        >
+          Logout
+        </button>
+
+      </ng-container>
+      <ng-template #notAuthenticated>
+        <a 
+          routerLink="/login" 
+          class="border rounded-md px-4 py-1"
+        >
+          Login
+        </a>
+        <a 
+          routerLink="/register" 
+          class="border rounded-md px-4 py-1"
+        >
+          Register
+        </a>
+      </ng-template>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 p-4 text-center">
+    
+  </footer>
+</div>

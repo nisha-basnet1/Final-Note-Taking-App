@@ -1,0 +1,79 @@
+<div class="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <!-- Title Section -->
+    <h2 class="text-2xl font-bold text-gray-800 mb-8">Profile</h2>
+  
+    <!-- Profile Image Section -->
+    <div class="flex items-center space-x-8 mb-6">
+      <div class="relative">
+        <img [src]="profileData?.profile" alt="Profile Image" class="w-24 h-24 rounded-full shadow-md">
+
+        <!-- Edit Profile Picture Icon -->
+        <button 
+          (click)="onEditPictureClick()" 
+          class="absolute bottom-0 right-0 bg-blue-200 text-white rounded-full p-1 hover:bg-blue-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 11v8a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h8"></path> <path d="M8.5 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path> <path d="M21 15l-5-5L5 21"></path> <path d="M19 2v6"></path> <path d="M22 5h-6"></path> </g></svg>
+        </button>
+      </div>
+
+  <!-- Hidden File Input (triggered by the icon) -->
+    <input 
+      type="file" 
+      #fileInput 
+      accept="image/*" 
+      (change)="onFileSelected($event)" 
+      class="hidden">
+  
+    <!-- Profile Details Section -->
+    <div *ngIf="!editMode">
+      <div class="space-y-4">
+        <!-- Name -->
+        <div>
+          <p class="text-sm font-medium text-gray-500">Name</p>
+          <p class="text-lg text-gray-800">{{ profileData?.firstName }} {{ profileData?.lastName }}</p>
+        </div>
+        <!-- Email -->
+        <div>
+          <p class="text-sm font-medium text-gray-500">Email</p>
+          <p class="text-lg text-gray-800">{{ profileData?.email }}</p>
+        </div>
+        <div class="mt-6 flex justify-end">
+          <button (click)="toggleEditMode()" id="editBtn" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Edit Profile Section -->
+    <form *ngIf="editMode" (ngSubmit)="saveProfile()" class="space-y-6">
+      <!-- First Name -->
+      <div>
+        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+        <input type="text" id="firstName" [(ngModel)]="profileData.firstName" name="firstName" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+  
+      <!-- Last Name -->
+      <div>
+        <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+        <input type="text" id="lastName" [(ngModel)]="profileData.lastName" name="lastName" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+  
+      <!-- Email (Not Editable) -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="email" [value]="profileData.email" disabled class="mt-1 block w-full p-3 border border-gray-300 bg-gray-100 rounded-md shadow-sm">
+      </div>
+  
+      <!-- Save Button -->
+      <div class="flex justify-end space-x-4">
+        <button (click)="cancelEdit()" type="button" id="cancelBtn" class="px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-500">
+          Cancel
+        </button>
+        <button type="submit" id="saveBtn" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+  

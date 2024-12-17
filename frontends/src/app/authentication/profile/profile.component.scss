@@ -1,0 +1,84 @@
+#editBtn{
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #a78bfa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  #saveBtn{
+    padding: 5px;
+    min-width: fit-content;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #a78bfa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #cancelBtn{
+    padding: 10px;
+    min-width: fit-content;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #cancelBtn:hover{
+    background-color: red;
+  }
+
+  button:hover {
+    background-color:  #7c3aed;
+    transform: scale(1.01);
+  }
+
+.div{
+    align-items: center;
+}
+
+.container{
+    z-index: -1;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+label{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+input{
+    min-width: fit-content;
+    border: transparent;
+    border-radius: 10px;
+    border-bottom: 2px solid #a78bfa;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: #2d3748;
+    transition: border-color 0.3s ease;
+    outline: none;
+  }
+  
+  input:focus {
+    border-bottom: 2px solid #7c3aed;
+    transform: scale(1.01);
+  }
+  
+  input::placeholder {
+    color: #a0aec0;
+    font-size: 0.875rem;
+  }
